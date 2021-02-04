@@ -9,6 +9,7 @@ public class MyThread extends Thread{
         super();
         this.bar=bar;
         this.destination=destination;
+        this.setPriority(1);
     }
 
     @Override

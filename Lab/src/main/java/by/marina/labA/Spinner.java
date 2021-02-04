@@ -6,15 +6,19 @@ import javax.swing.event.ChangeEvent;
 public class Spinner{
    private JSpinner spinner;
    private  MyThread thread;
-    Spinner(int y, MyThread thread){
+    Spinner(int x, MyThread thread){
         SpinnerModel value=new SpinnerNumberModel(1,1,10,1);
        spinner=new JSpinner(value);
        this.thread=thread;
-       spinner.setBounds(200,y,30,30);
+       spinner.setBounds(x,50,40,40);
        spinner.addChangeListener(this::changePriority);
     }
 
     private void changePriority(ChangeEvent e){
         thread.setPriority((Integer) ((JSpinner)e.getSource()).getValue());
+    }
+
+    public JSpinner get(){
+        return spinner;
     }
 }
