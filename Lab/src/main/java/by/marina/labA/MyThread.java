@@ -1,7 +1,5 @@
 package by.marina.labA;
 
-import javax.swing.*;
-
 public class MyThread extends Thread{
     private ProgressBar bar;
     private int destination;
