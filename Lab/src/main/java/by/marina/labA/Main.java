@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        ProgressBar bar = new ProgressBar();
+        ProgressBar bar = new ProgressBar(150);
         frame.add(bar);
         frame.setSize(400, 300);
         MyThread a = new MyThread(bar, 10);
