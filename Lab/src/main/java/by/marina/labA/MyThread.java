@@ -3,9 +3,9 @@ package by.marina.labA;
 import javax.swing.*;
 
 public class MyThread extends Thread{
-    private JProgressBar bar;
+    private ProgressBar bar;
     private int destination;
-    MyThread(JProgressBar bar, int destination){
+    MyThread(ProgressBar bar, int destination){
         super();
         this.bar=bar;
         this.destination=destination;
@@ -14,21 +14,18 @@ public class MyThread extends Thread{
 
     @Override
     public void run() {
-        int iterator;
         while (true) {
             Thread.yield();
             synchronized (bar) {
-                iterator = bar.getValue();
-                if (iterator < destination)
-                    iterator++;
-                else if (iterator > destination)
-                    iterator--;
+                if (bar.getSemaphore() < destination)
+                    bar.incrementSemaphore();
+                else if (bar.getSemaphore() > destination)
+                    bar.decrementSemaphore();
                 try {
                     Thread.sleep(5);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                bar.setValue(iterator);
             }
         }
     }
