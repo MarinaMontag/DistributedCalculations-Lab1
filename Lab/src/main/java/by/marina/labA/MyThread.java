@@ -1,10 +1,9 @@
 package by.marina.labA;
 
 public class MyThread extends Thread{
-    private ProgressBar bar;
-    private int destination;
-    MyThread(ProgressBar bar, int destination){
-        super();
+    protected ProgressBar bar;
+    protected int destination;
+    public MyThread(ProgressBar bar, int destination){
         this.bar=bar;
         this.destination=destination;
         this.setPriority(1);
@@ -12,13 +11,13 @@ public class MyThread extends Thread{
 
     @Override
     public void run() {
-        while (true) {
+        while (!Thread.interrupted()) {
             Thread.yield();
             synchronized (bar) {
-                if (bar.getSemaphore() < destination)
-                    bar.incrementSemaphore();
-                else if (bar.getSemaphore() > destination)
-                    bar.decrementSemaphore();
+                if (bar.getIterator() < destination)
+                    bar.incrementIterator();
+                else if (bar.getIterator() > destination)
+                    bar.decrementIterator();
                 try {
                     Thread.sleep(5);
                 } catch (InterruptedException e) {

@@ -3,25 +3,25 @@ package by.marina.labA;
 import javax.swing.*;
 
 public class ProgressBar extends JProgressBar  {
-    private int semaphore=0;
-    ProgressBar(){
+    private int iterator=0;
+    public ProgressBar(int y){
         super(0,100);
-        setBounds(40,150,300,50);
-        setValue(semaphore);
+        setBounds(40,y,300,50);
+        setValue(iterator);
         setStringPainted(true);
     }
 
-    public synchronized int getSemaphore(){
-        return semaphore;
+    public int getIterator(){
+        return iterator;
     }
 
-    public synchronized void incrementSemaphore(){
-        semaphore++;
-        setValue(semaphore);
+    public void incrementIterator(){
+        iterator++;
+        setValue(iterator);
     }
 
-    public synchronized void decrementSemaphore(){
-        semaphore--;
-        setValue(semaphore);
+    public void decrementIterator(){
+        iterator--;
+        setValue(iterator);
     }
 }
