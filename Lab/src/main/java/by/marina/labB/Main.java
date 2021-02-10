@@ -1,6 +1,5 @@
 package by.marina.labB;
 
-import by.marina.labA.MyThread;
 import by.marina.labA.ProgressBar;
 
 import javax.swing.*;
